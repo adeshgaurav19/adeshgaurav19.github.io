@@ -268,8 +268,33 @@
             font-size: 18px;
             line-height: 1.8;
             color: var(--text-secondary);
-            margin-bottom: 40px;
+            margin-bottom: 24px;
             animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .language-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out 0.45s both;
+        }
+
+        .lang-badge {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .lang-badge:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
         }
 
         .cta-buttons {
@@ -459,6 +484,33 @@
             line-height: 1.7;
         }
 
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline-list li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .timeline-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
         /* Projects Grid */
         .projects-grid {
             display: grid;
@@ -579,6 +631,8 @@
         .skill-category:nth-child(2) { animation-delay: 0.2s; }
         .skill-category:nth-child(3) { animation-delay: 0.3s; }
         .skill-category:nth-child(4) { animation-delay: 0.4s; }
+        .skill-category:nth-child(5) { animation-delay: 0.5s; }
+        .skill-category:nth-child(6) { animation-delay: 0.6s; }
 
         .skill-header {
             display: flex;
@@ -609,6 +663,14 @@
 
         .skill-category:nth-child(4) .skill-icon {
             background: var(--gradient-4);
+        }
+
+        .skill-category:nth-child(5) .skill-icon {
+            background: var(--gradient-1);
+        }
+
+        .skill-category:nth-child(6) .skill-icon {
+            background: var(--gradient-2);
         }
 
         .skill-category h3 {
@@ -906,6 +968,14 @@
                 flex-direction: column;
             }
 
+            .language-badges {
+                flex-direction: column;
+            }
+
+            .lang-badge {
+                text-align: center;
+            }
+
             .footer-content {
                 flex-direction: column;
                 gap: 24px;
@@ -942,14 +1012,19 @@
             <div class="hero-content">
                 <div class="hero-tag">
                     <span class="status-dot"></span>
-                    Available for Internship
+                    Seeking Full-Time AI Roles
                 </div>
                 <h1>Building intelligent systems with data and AI</h1>
                 <p class="hero-subtitle">AI/ML Engineer & Data Scientist</p>
                 <p class="hero-description">
                     5+ years of experience transforming data into intelligent solutions. Specialized in deep learning, NLP, and GenAI applications. 
-                    Currently pursuing MSc in Data Science & AI Strategy at emlyon business school, seeking a 6-month internship starting September 2025.
+                    Currently pursuing MSc in Data Science & AI Strategy at emlyon business school, seeking full-time AI roles starting April 2026 (CDI or CDD contract).
                 </p>
+                <div class="language-badges">
+                    <span class="lang-badge">🇬🇧 English (Bilingual)</span>
+                    <span class="lang-badge">🇫🇷 French (Intermediate)</span>
+                    <span class="lang-badge">🇮🇳 Hindi (Native)</span>
+                </div>
                 <div class="cta-buttons">
                     <a href="#contact" class="btn btn-primary">
                         <span>Let's connect</span>
@@ -980,10 +1055,12 @@
                         <div class="timeline-date">Sep 2025 — Mar 2026</div>
                         <h3 class="timeline-title">AI/ML Engineer Intern</h3>
                         <div class="timeline-company">BNP Paribas · Paris, France</div>
-                        <p class="timeline-description">
-                            Collaborating with the Ampere team to build an AI system for road quality prediction using Neural Networks and Federated Learning. 
-                            Developing deep learning models for edge deployment, enabling real-time road condition monitoring and predictive maintenance optimization.
-                        </p>
+                        <ul class="timeline-list">
+                            <li>Collaborating with the Ampere team to build an AI system for road quality prediction using Neural Networks and Federated Learning</li>
+                            <li>Developing deep learning models optimized for edge deployment, enabling real-time road condition monitoring</li>
+                            <li>Implementing federated learning architecture for privacy-preserving collaborative model training across distributed vehicle fleets</li>
+                            <li>Enhancing vehicle fleet safety and reducing predictive maintenance costs through intelligent road surface analysis</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -992,10 +1069,12 @@
                         <div class="timeline-date">Jan 2025 — Mar 2025</div>
                         <h3 class="timeline-title">Data Scientist - Road Quality Prediction</h3>
                         <div class="timeline-company">Ampere (Renault Group) · Paris, France</div>
-                        <p class="timeline-description">
-                            Built AI system for road quality prediction harnessing Neural Networks and Federated Learning, 
-                            enhancing vehicle fleet safety and curbing predictive maintenance costs.
-                        </p>
+                        <ul class="timeline-list">
+                            <li>Built AI system for road quality prediction harnessing Neural Networks and Federated Learning</li>
+                            <li>Enhanced vehicle fleet safety through real-time road surface quality assessment and anomaly detection</li>
+                            <li>Reduced predictive maintenance costs by implementing intelligent road condition forecasting models</li>
+                            <li>Evaluated multiple deep learning architectures for optimal performance on resource-constrained edge devices</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -1004,10 +1083,13 @@
                         <div class="timeline-date">Jan 2022 — Aug 2024</div>
                         <h3 class="timeline-title">Senior Software Engineer - Data Engineering</h3>
                         <div class="timeline-company">Tiger Analytics · Bengaluru, India</div>
-                        <p class="timeline-description">
-                            Led design and implementation of advanced data ingestion frameworks for major healthcare clients, cutting project effort by 50%. 
-                            Executed migration of critical data domains for global retail company, improving operational efficiency by 40%.
-                        </p>
+                        <ul class="timeline-list">
+                            <li>Led design and implementation of advanced data ingestion and transformation frameworks for major healthcare clients, cutting project effort and ingestion time by 50%</li>
+                            <li>Executed migration of three critical data domains for a global retail company, improving operational efficiency by 40%</li>
+                            <li>Replaced legacy Informatica workflows with PySpark on AWS, significantly reducing processing time and enhancing scalability</li>
+                            <li>Streamlined inventory management and transfer processes through optimized data pipeline architecture</li>
+                            <li>Mentored junior engineers on data engineering best practices and cloud-native development</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -1016,10 +1098,13 @@
                         <div class="timeline-date">Aug 2019 — Dec 2021</div>
                         <h3 class="timeline-title">Software Engineer - Data and Analytics</h3>
                         <div class="timeline-company">Infosys · Pune, India</div>
-                        <p class="timeline-description">
-                            Developed and standardized data warehousing architecture across APAC for global retail brand. 
-                            Designed scalable data warehouse for global banking client using Informatica and Talend.
-                        </p>
+                        <ul class="timeline-list">
+                            <li>Developed and standardized data warehousing architecture across APAC region for a global retail brand</li>
+                            <li>Streamlined data mapping and transformation logic, reducing daily delta transaction processing time by 40%</li>
+                            <li>Designed scalable and flexible data warehouse for a global banking client using Informatica and Talend</li>
+                            <li>Enabled seamless integration from diverse data sources, improving overall workflow efficiency</li>
+                            <li>Collaborated with cross-functional teams to ensure data quality and governance standards</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1098,38 +1183,69 @@
             <div class="skills-wrapper">
                 <div class="skill-category">
                     <div class="skill-header">
-                        <div class="skill-icon">🤖</div>
-                        <h3>Machine Learning & Deep Learning</h3>
+                        <div class="skill-icon">💻</div>
+                        <h3>Programming & Data Tools</h3>
                     </div>
                     <p class="skill-description">
-                        Extensive experience building and deploying neural network architectures for computer vision, time series forecasting, and predictive analytics. 
-                        Specialized in model optimization for edge deployment and federated learning systems that enable privacy-preserving collaborative training across distributed datasets.
+                        Expert-level proficiency in Python ecosystem for data manipulation, analysis, and scientific computing. 
+                        Extensive experience with distributed computing frameworks and modern development environments for building scalable data solutions.
                     </p>
                     <div class="skill-tags">
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">Neural Networks</span>
-                        <span class="skill-tag">Federated Learning</span>
-                        <span class="skill-tag">Model Optimization</span>
-                        <span class="skill-tag">Edge AI</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Scala</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">Apache Spark</span>
+                        <span class="skill-tag">Jupyter</span>
+                        <span class="skill-tag">VS Code</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">🤖</div>
+                        <h3>Machine Learning & AI</h3>
+                    </div>
+                    <p class="skill-description">
+                        Comprehensive expertise in classical and modern machine learning techniques. Specialized in supervised/unsupervised learning, 
+                        feature engineering, and model evaluation. Advanced proficiency in Generative AI, transformer architectures, and cutting-edge techniques 
+                        including LoRA, QLoRA, and agentic AI systems for building production-ready intelligent applications.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Supervised Learning</span>
+                        <span class="skill-tag">Unsupervised Learning</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">Feature Engineering</span>
+                        <span class="skill-tag">Model Evaluation</span>
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">Transformers</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">Hugging Face</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">Agentic AI</span>
+                        <span class="skill-tag">Large Language Models</span>
+                        <span class="skill-tag">LoRA</span>
+                        <span class="skill-tag">QLoRA</span>
+                        <span class="skill-tag">RAG</span>
                     </div>
                 </div>
                 <div class="skill-category">
                     <div class="skill-header">
                         <div class="skill-icon">💬</div>
-                        <h3>Natural Language Processing & Generative AI</h3>
+                        <h3>NLP & Time Series Analysis</h3>
                     </div>
                     <p class="skill-description">
-                        Proficient in developing LLM-powered applications with focus on safety, reliability, and responsible AI practices. 
-                        Experience with transformer architectures, prompt engineering, retrieval-augmented generation (RAG), and implementing multi-layered content moderation systems for production environments.
+                        Deep expertise in natural language processing covering the full spectrum from text preprocessing to advanced semantic understanding. 
+                        Proficient in time series forecasting, temporal pattern recognition, and anomaly detection for predictive analytics applications.
                     </p>
                     <div class="skill-tags">
-                        <span class="skill-tag">Large Language Models</span>
-                        <span class="skill-tag">Transformers</span>
-                        <span class="skill-tag">Gemini API</span>
-                        <span class="skill-tag">RAG Systems</span>
-                        <span class="skill-tag">Prompt Engineering</span>
-                        <span class="skill-tag">Content Moderation</span>
+                        <span class="skill-tag">Text Classification</span>
+                        <span class="skill-tag">Named Entity Recognition</span>
+                        <span class="skill-tag">Sentiment Analysis</span>
+                        <span class="skill-tag">Topic Modeling</span>
+                        <span class="skill-tag">Temporal Analysis</span>
+                        <span class="skill-tag">Anomaly Detection</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -1138,36 +1254,63 @@
                         <h3>Cloud Infrastructure & MLOps</h3>
                     </div>
                     <p class="skill-description">
-                        AWS-certified professional with expertise in building scalable data pipelines and ML workflows. 
-                        Experienced in containerization, orchestration, and implementing CI/CD pipelines for machine learning models. 
-                        Skilled in distributed computing with PySpark for processing large-scale datasets efficiently.
+                        AWS-certified professional with hands-on experience across the full AWS data and ML stack. 
+                        Expert in containerization, version control, and implementing robust CI/CD pipelines for machine learning workflows. 
+                        Skilled in building scalable APIs and managing the complete ML lifecycle from development to production deployment.
                     </p>
                     <div class="skill-tags">
-                        <span class="skill-tag">AWS (Certified)</span>
-                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">AWS S3</span>
+                        <span class="skill-tag">AWS Glue</span>
+                        <span class="skill-tag">AWS Redshift</span>
+                        <span class="skill-tag">AWS Lambda</span>
+                        <span class="skill-tag">AWS SageMaker</span>
                         <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Kubernetes</span>
-                        <span class="skill-tag">MLOps</span>
+                        <span class="skill-tag">Git</span>
                         <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">MLflow</span>
+                        <span class="skill-tag">FastAPI</span>
                     </div>
                 </div>
                 <div class="skill-category">
                     <div class="skill-header">
-                        <div class="skill-icon">🗄️</div>
-                        <h3>Data Engineering & Analytics</h3>
+                        <div class="skill-icon">📊</div>
+                        <h3>Visualization & Databases</h3>
                     </div>
                     <p class="skill-description">
-                        Strong foundation in data warehousing, ETL/ELT pipeline development, and database management. 
-                        Proven track record of migrating legacy systems to modern cloud-based architectures, resulting in significant performance improvements. 
-                        Expert in Python and SQL for data manipulation, analysis, and automation.
+                        Proficient in creating compelling data visualizations and interactive dashboards using industry-leading tools. 
+                        Extensive experience with relational, NoSQL, cloud data warehouses, and modern vector databases for AI applications. 
+                        Strong foundation in data modeling, query optimization, and database administration.
                     </p>
                     <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Informatica</span>
-                        <span class="skill-tag">Talend</span>
-                        <span class="skill-tag">ETL/ELT Pipelines</span>
-                        <span class="skill-tag">Data Warehousing</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Plotly</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">Vector Databases</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">🎯</div>
+                        <h3>Professional Skills</h3>
+                    </div>
+                    <p class="skill-description">
+                        Strong communicator with proven ability to translate complex technical concepts into actionable business insights. 
+                        Experienced in data storytelling, collaborative problem-solving, and maintaining a growth mindset in rapidly evolving technical landscapes.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Data Storytelling</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Teamwork</span>
+                        <span class="skill-tag">Adaptability</span>
+                        <span class="skill-tag">Continuous Learning</span>
                     </div>
                 </div>
             </div>
@@ -1181,21 +1324,21 @@
                 <div class="section-label">Get in Touch</div>
                 <h2>Let's Connect</h2>
                 <p class="section-description">
-                    Seeking a 6-month end-of-studies internship starting September 2025
+                    Seeking full-time AI roles starting April 2026 (CDI or CDD contract)
                 </p>
             </div>
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <h3>Contact Information</h3>
                     <p>
-                        I'm actively seeking opportunities to apply AI and machine learning solutions to real-world challenges. 
-                        Whether you have a project in mind or just want to discuss AI, feel free to reach out.
+                        I'm actively seeking full-time AI/ML positions starting April 2026 (CDI or CDD contract). 
+                        Whether you have an opportunity in mind or just want to discuss AI and machine learning, feel free to reach out.
                     </p>
-                    <a href="mailto:adesh.gaurav@edu.em-lyon.com" class="contact-item">
+                    <a href="/cdn-cgi/l/email-protection#0a6b6e6f7962246d6b7f786b7c4a6f6e7f246f67276673656424696567" class="contact-item">
                         <div class="contact-icon">📧</div>
                         <div class="contact-text">
                             <div class="contact-label">Email</div>
-                            <div class="contact-value">adesh.gaurav@edu.em-lyon.com</div>
+                            <div class="contact-value"><span class="__cf_email__" data-cfemail="cfaeabaabca7e1a8aebabdaeb98faaabbae1aaa2e2a3b6a0a1e1aca0a2">[email&#160;protected]</span></div>
                         </div>
                     </a>
                     <a href="tel:+33780796369" class="contact-item">
@@ -1249,13 +1392,13 @@
                 <div class="social-links">
                     <a href="#" class="social-link" title="LinkedIn">💼</a>
                     <a href="#" class="social-link" title="GitHub">🐙</a>
-                    <a href="mailto:adesh.gaurav@edu.em-lyon.com" class="social-link" title="Email">📧</a>
+                    <a href="/cdn-cgi/l/email-protection#4021242533286e272135322136002524356e252d6d2c392f2e6e232f2d" class="social-link" title="Email">📧</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1278,15 +1421,3 @@
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-reveal').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
-</body>
-</html>
