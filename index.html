@@ -1421,3 +1421,18 @@
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Apply reveal class to sections for animation
+        document.querySelectorAll('section, .timeline-item, .project-card, .skill-category').forEach(el => {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
