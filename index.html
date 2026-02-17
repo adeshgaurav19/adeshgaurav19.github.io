@@ -16,6 +16,7 @@
             --light: #f5f5f5;
             --pink: #ff6b9d;
             --purple: #c879ff;
+            --blue: #4facfe;
         }
 
         * {
@@ -117,12 +118,14 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 40px 60px;
+            padding: 30px 60px;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            mix-blend-mode: difference;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
@@ -132,13 +135,13 @@
             color: var(--light);
         }
 
-        .nav-links {
+        .nav-center {
             display: flex;
             gap: 40px;
             list-style: none;
         }
 
-        .nav-links a {
+        .nav-center a {
             color: var(--light);
             text-decoration: none;
             font-size: 14px;
@@ -148,8 +151,32 @@
             transition: opacity 0.3s;
         }
 
-        .nav-links a:hover {
+        .nav-center a:hover {
             opacity: 0.6;
+        }
+
+        /* CV Download Button */
+        .cv-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cv-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
         }
 
         /* About Me Button */
@@ -169,6 +196,7 @@
             box-shadow: 0 10px 40px rgba(255, 107, 157, 0.4);
             transition: all 0.3s ease;
             animation: pulse 2s ease-in-out infinite;
+            overflow: hidden;
         }
 
         .about-btn:hover {
@@ -176,14 +204,11 @@
             box-shadow: 0 15px 50px rgba(255, 107, 157, 0.6);
         }
 
-        .avatar {
+        .about-btn img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
             border-radius: 50%;
-            font-size: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         @keyframes pulse {
@@ -253,15 +278,18 @@
         }
 
         .about-avatar-large {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             margin: 0 auto 30px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--pink), var(--purple));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
+            overflow: hidden;
+            border: 4px solid var(--accent);
+        }
+
+        .about-avatar-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .about-content h2 {
@@ -431,54 +459,61 @@
             margin: 0 auto;
         }
 
-        /* Map Container */
-        .map-container {
-            width: 100%;
-            max-width: 1400px;
-            height: 600px;
-            margin: 0 auto 80px;
+        /* Journey Visual */
+        .journey-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 100px;
             position: relative;
-            background: rgba(255, 255, 255, 0.03);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            overflow: hidden;
         }
 
-        .map-svg {
+        .city-card {
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .city-card:nth-child(1) { animation-delay: 0.2s; }
+        .city-card:nth-child(2) { animation-delay: 0.6s; }
+        .city-card:nth-child(3) { animation-delay: 0.4s; }
+
+        .city-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .city-image img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
 
-        /* Journey Path */
-        .journey-path {
-            stroke: var(--accent);
-            stroke-width: 3;
-            fill: none;
-            stroke-dasharray: 2000;
-            stroke-dashoffset: 2000;
-            animation: drawPath 3s ease forwards;
+        .city-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
         }
 
-        @keyframes drawPath {
-            to {
-                stroke-dashoffset: 0;
-            }
+        .city-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Location Markers */
-        .location-marker {
-            animation: markerPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes markerPulse {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.7;
-                transform: scale(1.1);
-            }
+        .journey-arrow {
+            font-size: 48px;
+            color: var(--accent);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
         }
 
         /* Journey Timeline */
@@ -533,30 +568,59 @@
             line-height: 1.8;
         }
 
-        .stop-image {
+        .stop-avatar {
             width: 100%;
             height: 300px;
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(200, 121, 255, 0.2));
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
+            overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .stop-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(200, 121, 255, 0.1));
         }
 
         .journey-stop:nth-child(even) .stop-info {
             order: 1;
         }
 
-        .journey-stop:nth-child(even) .stop-image {
+        .journey-stop:nth-child(even) .stop-avatar {
             order: 2;
+        }
+
+        /* Section with Avatar */
+        .section-with-avatar {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .section-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(200, 121, 255, 0.1));
         }
 
         /* Experience, Projects, Skills - Compact */
         .compact-section {
-            padding: 80px 60px;
-            max-width: 1200px;
+            padding: 100px 60px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -799,8 +863,27 @@
 
         /* Responsive */
         @media (max-width: 968px) {
-            nav, .journey-section, .compact-section {
-                padding: 30px;
+            nav {
+                padding: 20px 30px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-center {
+                gap: 20px;
+            }
+
+            .journey-section, .compact-section {
+                padding: 80px 30px;
+            }
+
+            .journey-visual {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .journey-arrow {
+                transform: rotate(90deg);
             }
 
             .journey-stop {
@@ -811,8 +894,17 @@
                 order: 2;
             }
 
-            .journey-stop:nth-child(even) .stop-image {
+            .journey-stop:nth-child(even) .stop-avatar {
                 order: 1;
+            }
+
+            .section-with-avatar {
+                flex-direction: column;
+            }
+
+            .section-avatar {
+                width: 100%;
+                height: auto;
             }
 
             .contact-content {
@@ -829,6 +921,7 @@
 
             .about-content {
                 padding: 40px 30px;
+                max-width: 90%;
             }
 
             .cursor, .cursor-follower {
@@ -840,10 +933,6 @@
                 height: 60px;
                 bottom: 20px;
                 right: 20px;
-            }
-
-            .avatar {
-                font-size: 30px;
             }
         }
     </style>
@@ -866,29 +955,34 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">ADESH GAURAV</div>
-        <ul class="nav-links">
+        <ul class="nav-center">
             <li><a href="#journey">Journey</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <a href="#" class="cv-btn" id="downloadCV">
+            📄 Download CV
+        </a>
     </nav>
 
     <!-- About Me Button -->
     <div class="about-btn" onclick="toggleAbout()">
-        <div class="avatar">👨‍💻</div>
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23667eea'/%3E%3Ctext x='50' y='65' font-size='40' text-anchor='middle' fill='white'%3E👨‍💻%3C/text%3E%3C/svg%3E" alt="Avatar">
     </div>
 
     <!-- About Modal -->
     <div class="about-modal" id="aboutModal">
         <div class="about-content">
             <button class="close-btn" onclick="toggleAbout()">×</button>
-            <div class="about-avatar-large">👨‍💻</div>
+            <div class="about-avatar-large">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%23667eea'/%3E%3Ctext x='100' y='130' font-size='80' text-anchor='middle' fill='white'%3E👨‍💻%3C/text%3E%3C/svg%3E" alt="Adesh Avatar">
+            </div>
             <h2>About Me</h2>
             <p class="about-subtitle">AI/ML Engineer & Data Scientist</p>
             <p class="about-text">
-                Hey! I'm Adesh, an AI/ML enthusiast from India now based in Paris. My journey from Chandigarh to Paris has been driven by 
+                Hey! I'm Adesh, an AI/ML enthusiast from India now based in Paris. My journey from New Delhi to Paris has been driven by 
                 a passion for transforming data into intelligent solutions. With 5+ years of experience, I've worked across healthcare, 
                 retail, and automotive industries, building systems that make a real impact.
             </p>
@@ -916,7 +1010,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-label">FROM INDIA TO PARIS</div>
+            <div class="hero-label">FROM NEW DELHI TO PARIS</div>
             <h1 class="hero-title">
                 MY <span>AI</span> JOURNEY
             </h1>
@@ -931,60 +1025,46 @@
             <div class="section-label">THE PATH</div>
             <h2 class="section-title">My Journey</h2>
             <p class="section-description">
-                From the streets of Chandigarh to the tech hubs of Bengaluru, Pune, and Paris — 
-                a journey driven by curiosity and passion for AI
+                From the capital of India to the heart of Europe — a journey driven by curiosity and passion for AI
             </p>
         </div>
 
-        <!-- Map -->
-        <div class="map-container">
-            <svg class="map-svg" viewBox="0 0 1400 600" xmlns="http://www.w3.org/2000/svg">
-                <!-- Simplified World Map Background -->
-                <rect width="1400" height="600" fill="rgba(255,255,255,0.02)"/>
-                
-                <!-- Journey Path from India to Paris -->
-                <path class="journey-path" d="M 900 350 Q 700 250, 400 200" stroke-linecap="round"/>
-                
-                <!-- Location Markers -->
-                <!-- Chandigarh -->
-                <circle class="location-marker" cx="900" cy="350" r="8" fill="#ff6b9d"/>
-                <circle cx="900" cy="350" r="15" fill="none" stroke="#ff6b9d" stroke-width="2" opacity="0.5"/>
-                <text x="900" y="380" text-anchor="middle" fill="#c09e9c" font-size="14" font-weight="600">CHANDIGARH</text>
-                
-                <!-- Pune -->
-                <circle class="location-marker" cx="850" cy="370" r="8" fill="#ff6b9d"/>
-                <circle cx="850" cy="370" r="15" fill="none" stroke="#ff6b9d" stroke-width="2" opacity="0.5"/>
-                <text x="850" y="400" text-anchor="middle" fill="#c09e9c" font-size="14" font-weight="600">PUNE</text>
-                
-                <!-- Bengaluru -->
-                <circle class="location-marker" cx="830" cy="390" r="8" fill="#ff6b9d"/>
-                <circle cx="830" cy="390" r="15" fill="none" stroke="#ff6b9d" stroke-width="2" opacity="0.5"/>
-                <text x="830" y="420" text-anchor="middle" fill="#c09e9c" font-size="14" font-weight="600">BENGALURU</text>
-                
-                <!-- Paris -->
-                <circle class="location-marker" cx="400" cy="200" r="10" fill="#c879ff"/>
-                <circle cx="400" cy="200" r="20" fill="none" stroke="#c879ff" stroke-width="2" opacity="0.5"/>
-                <text x="400" y="235" text-anchor="middle" fill="#c09e9c" font-size="16" font-weight="700">PARIS</text>
-                
-                <!-- Airplane Icon -->
-                <g class="airplane" opacity="0">
-                    <text x="650" y="280" font-size="24" fill="#c09e9c">✈️</text>
-                </g>
-            </svg>
+        <!-- Journey Visual with Monuments -->
+        <div class="journey-visual">
+            <div class="city-card">
+                <div class="city-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%23ff9966' width='300' height='300'/%3E%3Cg fill='white' opacity='0.9'%3E%3Crect x='130' y='50' width='40' height='200'/%3E%3Crect x='120' y='60' width='60' height='20'/%3E%3Crect x='110' y='80' width='80' height='30'/%3E%3Ccircle cx='150' cy='45' r='25'/%3E%3C/g%3E%3Ctext x='150' y='280' text-anchor='middle' font-size='20' fill='white' font-weight='bold'%3EIndia Gate%3C/text%3E%3C/svg%3E" alt="New Delhi">
+                </div>
+                <div class="city-name">🇮🇳 NEW DELHI</div>
+                <div class="city-label">Starting Point</div>
+            </div>
+
+            <div class="journey-arrow">→</div>
+
+            <div class="city-card">
+                <div class="city-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Crect fill='%236699ff' width='300' height='300'/%3E%3Cg fill='white' opacity='0.9'%3E%3Cpolygon points='150,50 125,120 130,120 130,250 170,250 170,120 175,120'/%3E%3Cpolygon points='140,110 160,110 150,90'/%3E%3Cpolygon points='135,140 165,140 150,120'/%3E%3Cpolygon points='130,170 170,170 150,150'/%3E%3C/g%3E%3Ctext x='150' y='280' text-anchor='middle' font-size='20' fill='white' font-weight='bold'%3EEiffel Tower%3C/text%3E%3C/svg%3E" alt="Paris">
+                </div>
+                <div class="city-name">🇫🇷 PARIS</div>
+                <div class="city-label">Current Location</div>
+            </div>
         </div>
 
-        <!-- Journey Stops -->
+        <!-- Journey Stops with Avatars -->
         <div class="journey-timeline">
             <div class="journey-stop">
                 <div class="stop-info">
-                    <div class="stop-location">🇮🇳 CHANDIGARH, INDIA</div>
+                    <div class="stop-location">🇮🇳 NEW DELHI, INDIA</div>
                     <h3 class="stop-title">The Beginning</h3>
                     <p class="stop-description">
                         Where it all started. Completed my Bachelor of Engineering at Panjab University (2015-2019), 
-                        laying the foundation for my journey into the world of technology and AI.
+                        laying the foundation for my journey into the world of technology and AI. Born and raised in India's capital region, 
+                        I developed a strong curiosity for how technology can solve real-world problems.
                     </p>
                 </div>
-                <div class="stop-image">🎓</div>
+                <div class="stop-avatar">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Student Avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                </div>
             </div>
 
             <div class="journey-stop">
@@ -993,10 +1073,13 @@
                     <h3 class="stop-title">First Steps in Data</h3>
                     <p class="stop-description">
                         Joined Infosys as a Software Engineer (2019-2021). Developed data warehousing architectures 
-                        for global retail and banking clients, discovering my passion for data engineering and analytics.
+                        for global retail and banking clients, discovering my passion for data engineering and analytics. 
+                        This is where I learned the fundamentals of building scalable data systems.
                     </p>
                 </div>
-                <div class="stop-image">💼</div>
+                <div class="stop-avatar">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Working Avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                </div>
             </div>
 
             <div class="journey-stop">
@@ -1005,10 +1088,13 @@
                     <h3 class="stop-title">Scaling Up</h3>
                     <p class="stop-description">
                         Advanced to Senior Software Engineer at Tiger Analytics (2022-2024). Led data engineering projects 
-                        for healthcare and retail giants, cutting processing times by 50% through cloud-native solutions.
+                        for healthcare and retail giants, cutting processing times by 50% through cloud-native solutions. 
+                        Mastered AWS, PySpark, and building enterprise-scale data pipelines.
                     </p>
                 </div>
-                <div class="stop-image">🚀</div>
+                <div class="stop-avatar">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Senior Engineer Avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                </div>
             </div>
 
             <div class="journey-stop">
@@ -1018,20 +1104,34 @@
                     <p class="stop-description">
                         Currently pursuing MSc in Data Science & AI Strategy at emlyon business school. 
                         Working with BNP Paribas and Ampere (Renault Group) on cutting-edge AI projects, 
-                        from road quality prediction to federated learning systems.
+                        from road quality prediction to federated learning systems. Living the dream of combining 
+                        business strategy with technical AI expertise in the heart of Europe.
                     </p>
                 </div>
-                <div class="stop-image">🎯</div>
+                <div class="stop-avatar">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="AI Expert Avatar" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
     <section id="experience" class="compact-section">
-        <div class="section-header">
-            <div class="section-label">PROFESSIONAL JOURNEY</div>
-            <h2 class="section-title">Experience</h2>
+        <div class="section-with-avatar">
+            <div class="section-avatar">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Professional Avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+            </div>
+            <div style="flex: 1;">
+                <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                    <div class="section-label">PROFESSIONAL JOURNEY</div>
+                    <h2 class="section-title">Experience</h2>
+                    <p class="section-description" style="margin: 0;">
+                        Building AI-powered solutions across industries
+                    </p>
+                </div>
+            </div>
         </div>
+        
         <div class="journey-timeline">
             <div class="timeline-item">
                 <div class="timeline-date">SEP 2025 — MAR 2026</div>
@@ -1041,6 +1141,7 @@
                     <li>Building AI system for road quality prediction using Neural Networks and Federated Learning</li>
                     <li>Developing deep learning models optimized for edge deployment</li>
                     <li>Implementing privacy-preserving collaborative model training across vehicle fleets</li>
+                    <li>Enhancing vehicle fleet safety and reducing maintenance costs</li>
                 </ul>
             </div>
 
@@ -1049,9 +1150,9 @@
                 <h3>Data Scientist</h3>
                 <div class="timeline-company">Ampere (Renault Group) · Paris, France</div>
                 <ul class="timeline-list">
-                    <li>Built AI system for road quality prediction with Neural Networks and Federated Learning</li>
-                    <li>Enhanced vehicle fleet safety through real-time road surface quality assessment</li>
-                    <li>Evaluated deep learning architectures for resource-constrained edge devices</li>
+                    <li>Built AI system for road quality prediction with Neural Networks</li>
+                    <li>Enhanced vehicle fleet safety through real-time road surface assessment</li>
+                    <li>Evaluated deep learning architectures for edge devices</li>
                 </ul>
             </div>
 
@@ -1060,9 +1161,10 @@
                 <h3>Senior Software Engineer - Data Engineering</h3>
                 <div class="timeline-company">Tiger Analytics · Bengaluru, India</div>
                 <ul class="timeline-list">
-                    <li>Led advanced data ingestion frameworks for healthcare clients (50% efficiency gain)</li>
-                    <li>Migrated critical data domains for global retail (40% operational improvement)</li>
+                    <li>Led advanced data ingestion frameworks (50% efficiency gain)</li>
+                    <li>Migrated critical data domains for global retail (40% improvement)</li>
                     <li>Replaced Informatica with PySpark on AWS, enhancing scalability</li>
+                    <li>Mentored junior engineers on cloud-native development</li>
                 </ul>
             </div>
 
@@ -1071,9 +1173,10 @@
                 <h3>Software Engineer - Data and Analytics</h3>
                 <div class="timeline-company">Infosys · Pune, India</div>
                 <ul class="timeline-list">
-                    <li>Standardized data warehousing architecture across APAC for global retail brand</li>
-                    <li>Reduced transaction processing time by 40% through optimized transformation logic</li>
-                    <li>Designed scalable data warehouse for banking client using Informatica and Talend</li>
+                    <li>Standardized data warehousing architecture across APAC</li>
+                    <li>Reduced transaction processing time by 40%</li>
+                    <li>Designed scalable data warehouse for banking client</li>
+                    <li>Collaborated with cross-functional teams on data quality</li>
                 </ul>
             </div>
         </div>
@@ -1081,10 +1184,21 @@
 
     <!-- Projects Section -->
     <section id="projects" class="compact-section">
-        <div class="section-header">
-            <div class="section-label">FEATURED WORK</div>
-            <h2 class="section-title">Projects</h2>
+        <div class="section-with-avatar">
+            <div class="section-avatar">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Projects Avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+            </div>
+            <div style="flex: 1;">
+                <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                    <div class="section-label">FEATURED WORK</div>
+                    <h2 class="section-title">Projects</h2>
+                    <p class="section-description" style="margin: 0;">
+                        Innovative AI solutions tackling real-world challenges
+                    </p>
+                </div>
+            </div>
         </div>
+        
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-badge">🏆 AWARD WINNER</div>
@@ -1119,8 +1233,8 @@
                 <div class="project-badge">🚗 AUTOMOTIVE AI</div>
                 <h3 class="project-title">Road Quality Prediction</h3>
                 <p class="project-description">
-                    Neural network system for predicting road conditions using vehicle sensor data with 
-                    federated learning for privacy-preserving training.
+                    Neural network system for predicting road conditions with federated learning 
+                    for privacy-preserving training.
                 </p>
                 <div class="project-tech">
                     <span class="tech-tag">Neural Networks</span>
@@ -1133,10 +1247,21 @@
 
     <!-- Skills Section -->
     <section id="skills" class="compact-section">
-        <div class="section-header">
-            <div class="section-label">EXPERTISE</div>
-            <h2 class="section-title">Skills</h2>
+        <div class="section-with-avatar">
+            <div class="section-avatar">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Skills Avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+            </div>
+            <div style="flex: 1;">
+                <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                    <div class="section-label">EXPERTISE</div>
+                    <h2 class="section-title">Skills</h2>
+                    <p class="section-description" style="margin: 0;">
+                        Full-stack AI/ML capabilities from data to deployment
+                    </p>
+                </div>
+            </div>
         </div>
+        
         <div>
             <div class="skill-category">
                 <div class="skill-header">
@@ -1154,6 +1279,8 @@
                     <span class="skill-tag">NumPy</span>
                     <span class="skill-tag">PySpark</span>
                     <span class="skill-tag">Apache Spark</span>
+                    <span class="skill-tag">Jupyter</span>
+                    <span class="skill-tag">VS Code</span>
                 </div>
             </div>
 
@@ -1166,13 +1293,19 @@
                     Comprehensive ML expertise with advanced GenAI, transformers, and agentic AI systems
                 </p>
                 <div class="skill-tags">
+                    <span class="skill-tag">Supervised Learning</span>
+                    <span class="skill-tag">Unsupervised Learning</span>
                     <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">Feature Engineering</span>
                     <span class="skill-tag">Generative AI</span>
                     <span class="skill-tag">Transformers</span>
                     <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">Hugging Face</span>
+                    <span class="skill-tag">Prompt Engineering</span>
                     <span class="skill-tag">LLMs</span>
                     <span class="skill-tag">RAG</span>
                     <span class="skill-tag">LoRA</span>
+                    <span class="skill-tag">QLoRA</span>
                     <span class="skill-tag">Agentic AI</span>
                 </div>
             </div>
@@ -1187,9 +1320,10 @@
                 </p>
                 <div class="skill-tags">
                     <span class="skill-tag">Text Classification</span>
-                    <span class="skill-tag">NER</span>
+                    <span class="skill-tag">Named Entity Recognition</span>
                     <span class="skill-tag">Sentiment Analysis</span>
                     <span class="skill-tag">Topic Modeling</span>
+                    <span class="skill-tag">Temporal Analysis</span>
                     <span class="skill-tag">Anomaly Detection</span>
                 </div>
             </div>
@@ -1205,8 +1339,11 @@
                 <div class="skill-tags">
                     <span class="skill-tag">AWS S3</span>
                     <span class="skill-tag">AWS Glue</span>
+                    <span class="skill-tag">AWS Redshift</span>
+                    <span class="skill-tag">AWS Lambda</span>
                     <span class="skill-tag">AWS SageMaker</span>
                     <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Git</span>
                     <span class="skill-tag">CI/CD</span>
                     <span class="skill-tag">MLflow</span>
                     <span class="skill-tag">FastAPI</span>
@@ -1225,7 +1362,11 @@
                     <span class="skill-tag">Power BI</span>
                     <span class="skill-tag">Tableau</span>
                     <span class="skill-tag">Streamlit</span>
+                    <span class="skill-tag">Matplotlib</span>
+                    <span class="skill-tag">Seaborn</span>
+                    <span class="skill-tag">Plotly</span>
                     <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MySQL</span>
                     <span class="skill-tag">MongoDB</span>
                     <span class="skill-tag">Snowflake</span>
                     <span class="skill-tag">Vector Databases</span>
@@ -1245,6 +1386,8 @@
                     <span class="skill-tag">Data Storytelling</span>
                     <span class="skill-tag">Problem Solving</span>
                     <span class="skill-tag">Teamwork</span>
+                    <span class="skill-tag">Adaptability</span>
+                    <span class="skill-tag">Continuous Learning</span>
                 </div>
             </div>
         </div>
@@ -1313,34 +1456,21 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 Adesh Gaurav · Crafted with passion from India to Paris</p>
+        <p>© 2025 Adesh Gaurav · From New Delhi to Paris with ❤️ for AI</p>
     </footer>
 
     <script>
         // Loader
         setTimeout(() => {
             document.querySelector('.loader').classList.add('hidden');
-            animateAirplane();
         }, 2500);
 
-        // Airplane Animation
-        function animateAirplane() {
-            const airplane = document.querySelector('.airplane');
-            airplane.style.transition = 'all 5s ease-in-out';
-            airplane.style.opacity = '1';
-            
-            let position = 0;
-            const animate = () => {
-                if (position < 100) {
-                    position += 0.5;
-                    const x = 900 - (position * 5);
-                    const y = 350 - (position * 1.5);
-                    airplane.style.transform = `translate(${x - 900}px, ${y - 350}px) rotate(-20deg)`;
-                    requestAnimationFrame(animate);
-                }
-            };
-            animate();
-        }
+        // CV Download - You can replace this URL with actual CV file later
+        document.getElementById('downloadCV').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('CV download functionality ready! Replace the # in href with your CV file path.');
+            // When you have the CV file, use: window.location.href = '/path/to/your/cv.pdf';
+        });
 
         // Custom Cursor
         const cursor = document.querySelector('.cursor');
@@ -1367,10 +1497,12 @@
         // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 }
             });
         });
